@@ -1,3 +1,4 @@
+include <OpenSCAD-tray/tray.scad>
 // Dimensions
 block_z = 22;
 block_y = 47;
@@ -46,14 +47,23 @@ difference() {
   // color("cyan") translate([(block_x / 2),0,-(block_z/2)]) cylinder(r=1.5, h=4, $fn=100, center=true);
 }
 
-// Equipment housing
 difference() {
-  // Cyan: rear housing outer box for microcontroller/battery/etc.
-  color("cyan") translate([-(block_x / 2), -(block_y / 2), -((block_z / 2) + (equipment_housing_calc_length+2))]) cube([block_x, block_y, equipment_housing_calc_length+2]);
-  
+  translate([-(block_x / 2), -(block_y / 2), -10.5]) 
+    rotate([0,90,0])
+      tray([70, 47, 36], curved=false);
+
   // White: rear top channel for wires
-  color("white") translate([14,-(7.5),-(equipment_housing_calc_length + block_z/ 2)-2]) cube([4,15,equipment_housing_calc_length+2]);
-  
-  // Cyan: rear housing inner box for microcontroller/battery/etc.
-  color("cyan") translate([2,0,-equipment_housing_length + block_z]) cube([equipment_housing_calc_depth,equipment_housing_calc_width,equipment_housing_calc_length], center=true);
+  color("white") translate([14,-(7.5),-(equipment_housing_calc_length + block_z/ 2)]) cube([4,15,equipment_housing_calc_length+2]);
 }
+
+// Equipment housing
+// difference() {
+//   // Cyan: rear housing outer box for microcontroller/battery/etc.
+//   color("cyan") translate([-(block_x / 2), -(block_y / 2), -((block_z / 2) + (equipment_housing_calc_length+2))]) cube([block_x, block_y, equipment_housing_calc_length+2]);
+  
+//   // White: rear top channel for wires
+//   color("white") translate([14,-(7.5),-(equipment_housing_calc_length + block_z/ 2)-2]) cube([4,15,equipment_housing_calc_length+2]);
+  
+//   // Cyan: rear housing inner box for microcontroller/battery/etc.
+//   color("cyan") translate([2,0,-equipment_housing_length + block_z]) cube([equipment_housing_calc_depth,equipment_housing_calc_width,equipment_housing_calc_length], center=true);
+// }
