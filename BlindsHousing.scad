@@ -60,7 +60,7 @@ difference() {
 difference() {
   translate([-(block_x / 2), -(block_y / 2), -10.5]) 
     rotate([0,90,0])
-      tray([70, 47, 36], curved=false);
+      tray([equipment_housing_length, block_y, block_x], curved=false);
 
   // White: rear top channel for wires
   color("white") 
